@@ -1,10 +1,10 @@
 Name:		mib-report
-Version:	0.7
+Version:	0.8
 Release:	%mkrel 1
-License:	GPLv2
 Summary:	A tool to generate packages reports for MIB, MDV and MGA repos
+License:	GPLv2
+Group:		Applications/Productivity
 Url:		http://mib.pianetalinux.org/mib-report/
-Group:		System/Configuration/Packaging
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
 BuildRequires:	qt4-devel
 Requires:	lynx
@@ -13,11 +13,12 @@ Requires:	curl
 %description
 A tool to generate packages reports and check package versions.
 
-Since 0.7 it supports 3 report modes:
-1) mib - report for supported MIB repositories
-2) mga-mdv - report for packages in Mageia repositories that may be interesting
+Since 0.8 it supports 4 report modes:
+1) mga-mdv - report for packages in Mageia repositories that may be interesting
 for Mandriva packagers
-3) mdv-mga - like mga-mdv but for Mageia packagers (by request)
+2) mdv-mga - like mga-mdv but for Mageia packagers (by request)
+3) mdv-rosa
+4) rosa-mdv
 
 It produces a table with packages and shows if there are newer versions of
 these packages in other distros. It also gives quick links for source packages
@@ -26,17 +27,9 @@ and programs' homepages.
 Since 0.4 new mode "--search package" was added. It searches for package in all
 reference repositories and displays results in Repository, Version, URL format.
 
-Version %{version} supports MIB repositories:
--MIB 2009.1
--MIB 2010.0
--MIB 2010.2
--MIB 2011.0
-
-And reference repositories:
+Version %{version} supports reference repositories:
+-Rosa 2012.1
 -MDV Cooker
--MDV Restricted (ex-PLF)
--EduMandriva
--MRB (Mandrivausers Romanian Backports)
 -Mageia Cauldron
 -PCLinuxOS
 -OpenSUSE Factory
@@ -67,7 +60,6 @@ And reference repositories:
 %__rm -rf %{buildroot}
 
 %files
-%defattr(-, root, root, -)
 %doc COPYING AUTHORS ChangeLog
 %{_bindir}/%{name}
 %{_bindir}/mdv-locate
