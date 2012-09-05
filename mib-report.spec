@@ -1,12 +1,13 @@
 Name:		mib-report
 Version:	0.8
 Release:	%mkrel 1
-Summary:	A tool to generate packages reports for MIB, MDV and MGA repos
+Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 License:	GPLv2
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
 BuildRequires:	qt4-devel
+BuildRequires:	rpm-devel
 Requires:	lynx
 Requires:	curl
 
