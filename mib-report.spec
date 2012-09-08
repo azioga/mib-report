@@ -6,6 +6,7 @@ License:	GPLv2
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
+Patch0:		mib-report-0.8-rpm5.patch
 BuildRequires:	qt4-devel
 BuildRequires:	rpm-devel
 Requires:	lynx
@@ -42,6 +43,9 @@ Version %{version} supports reference repositories:
 
 %prep
 %setup -q
+%if %{mdvver} >= 201100
+%patch0 -p1
+%endif
 
 %build
 %qmake_qt4
