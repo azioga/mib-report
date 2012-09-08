@@ -1,6 +1,6 @@
 Name:		mib-report
 Version:	0.8
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 License:	GPLv2
 Group:		System/Configuration/Packaging
