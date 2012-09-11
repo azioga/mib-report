@@ -1,23 +1,26 @@
 Name:		mib-report
-Version:	0.7
-Release:	%mkrel 1
+Version:	0.8
+Release:	%mkrel 2
+Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 License:	GPLv2
-Summary:	A tool to generate packages reports for MIB, MDV and MGA repos
-Url:		http://mib.pianetalinux.org/mib-report/
 Group:		System/Configuration/Packaging
+Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
+Patch0:		mib-report-0.8-rpm5.patch
 BuildRequires:	qt4-devel
+BuildRequires:	rpm-devel
 Requires:	lynx
 Requires:	curl
 
 %description
 A tool to generate packages reports and check package versions.
 
-Since 0.7 it supports 3 report modes:
-1) mib - report for supported MIB repositories
-2) mga-mdv - report for packages in Mageia repositories that may be interesting
+Since 0.8 it supports 4 report modes:
+1) mga-mdv - report for packages in Mageia repositories that may be interesting
 for Mandriva packagers
-3) mdv-mga - like mga-mdv but for Mageia packagers (by request)
+2) mdv-mga - like mga-mdv but for Mageia packagers (by request)
+3) mdv-rosa
+4) rosa-mdv
 
 It produces a table with packages and shows if there are newer versions of
 these packages in other distros. It also gives quick links for source packages
@@ -26,17 +29,9 @@ and programs' homepages.
 Since 0.4 new mode "--search package" was added. It searches for package in all
 reference repositories and displays results in Repository, Version, URL format.
 
-Version %{version} supports MIB repositories:
--MIB 2009.1
--MIB 2010.0
--MIB 2010.2
--MIB 2011.0
-
-And reference repositories:
+Version %{version} supports reference repositories:
+-Rosa 2012.1
 -MDV Cooker
--MDV Restricted (ex-PLF)
--EduMandriva
--MRB (Mandrivausers Romanian Backports)
 -Mageia Cauldron
 -PCLinuxOS
 -OpenSUSE Factory
@@ -48,6 +43,9 @@ And reference repositories:
 
 %prep
 %setup -q
+%if %{mdvver} >= 201100
+%patch0 -p1
+%endif
 
 %build
 %qmake_qt4
@@ -67,7 +65,6 @@ And reference repositories:
 %__rm -rf %{buildroot}
 
 %files
-%defattr(-, root, root, -)
 %doc COPYING AUTHORS ChangeLog
 %{_bindir}/%{name}
 %{_bindir}/mdv-locate
@@ -79,7 +76,15 @@ And reference repositories:
 
 
 %changelog
-* Thu Feb 02 2012 Andrey Bondrov <abondrov@mandriva.org> 0.7-1mdv2012.0
+* Sat Sep 08 2012 Andrey Bondrov <abondrov@mandriva.org> 0.8-2mdv2012.0
++ Revision: 816558
+- Just rebuild
+- Add patch to fix build with RPM5
+- Add rpm-devel to BuildRequires and fix summary
+- Fix group once again
+- New version 0.8 with support for Rosa 2012.1 repositories and MDV vs ROSA reports, drop support for old community repositories and reports
+
+* Thu Feb 02 2012 Andrey Bondrov <abondrov@mandriva.org> 0.7-1
 + Revision: 770665
 - imported package mib-report
 
