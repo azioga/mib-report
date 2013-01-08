@@ -1,0 +1,20 @@
+diff -urN mib-report-0.9/mib-report.pro mib-report-0.9-patched/mib-report.pro
+--- mib-report-0.9/mib-report.pro	2013-01-03 20:18:14.000000000 +1100
++++ mib-report-0.9-patched/mib-report.pro	2013-01-08 19:21:14.655490153 +1100
+@@ -16,4 +16,4 @@
+     packagedb.h \
+     globals.h \
+     repo.h
+-LIBS += -lrpmdb
++LIBS += -lrpm
+diff -urN mib-report-0.9/versionchecker.cpp mib-report-0.9-patched/versionchecker.cpp
+--- mib-report-0.9/versionchecker.cpp	2013-01-03 20:10:44.000000000 +1100
++++ mib-report-0.9-patched/versionchecker.cpp	2013-01-08 19:21:37.792034064 +1100
+@@ -1,6 +1,5 @@
+ #include "versionchecker.h"
+-#include <stdint.h>
+-#include <rpm/rpmevr.h>
++#include <rpm/rpmlib.h>
+ 
+ VersionChecker::VersionChecker()
+ {

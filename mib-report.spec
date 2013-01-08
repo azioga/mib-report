@@ -1,12 +1,12 @@
 Name:		mib-report
-Version:	0.8
-Release:	%mkrel 2
+Version:	0.9
+Release:	1
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 License:	GPLv2
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
-Patch0:		mib-report-0.8-rpm5.patch
+Patch0:		mib-report-0.9-rpm4.patch
 BuildRequires:	qt4-devel
 BuildRequires:	rpm-devel
 Requires:	lynx
@@ -15,12 +15,14 @@ Requires:	curl
 %description
 A tool to generate packages reports and check package versions.
 
-Since 0.8 it supports 4 report modes:
+Since 0.9 it supports 6 report modes:
 1) mga-mdv - report for packages in Mageia repositories that may be interesting
 for Mandriva packagers
 2) mdv-mga - like mga-mdv but for Mageia packagers (by request)
 3) mdv-rosa
 4) rosa-mdv
+5) mga-rosa
+6) rosa-mga
 
 It produces a table with packages and shows if there are newer versions of
 these packages in other distros. It also gives quick links for source packages
@@ -43,7 +45,7 @@ Version %{version} supports reference repositories:
 
 %prep
 %setup -q
-%if %{mdvver} >= 201100
+%if %{mdvver} < 201100
 %patch0 -p1
 %endif
 
@@ -74,8 +76,13 @@ Version %{version} supports reference repositories:
 %{_datadir}/%{name}/blacklist.txt
 
 
-
 %changelog
+* Tue Jan 08 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.9-1
+- Add Rosa vs MGA and MGA vs Rosa reports
+- Update URLs for Cooker repositories (as Cooker moved to ABF)
+- Fix URLs for Fedora's RPM Fusion repositories
+- Update urls.txt
+
 * Sat Sep 08 2012 Andrey Bondrov <abondrov@mandriva.org> 0.8-2mdv2012.0
 + Revision: 816558
 - Just rebuild
