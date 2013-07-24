@@ -1,8 +1,8 @@
-Name:		mib-report
-Version:	0.9
-Release:	1
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
-License:	GPLv2
+Name:		mib-report
+Version:	0.10
+Release:	1
+License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
@@ -39,9 +39,10 @@ Version %{version} supports reference repositories:
 -OpenSUSE Factory
 -Alt Linux Sisyphus
 -Fedora Rawhide (+RpmFusion)
+-Gentoo
 -Debian
 -Ubuntu
--Gentoo
+-Upstream Tracker
 
 %prep
 %setup -q
@@ -50,34 +51,36 @@ Version %{version} supports reference repositories:
 %endif
 
 %build
+# Can be built with Qt5 if needed
 %qmake_qt4
 %make
 
 %install
-%__rm -rf %{buildroot}
-%__mkdir_p %{buildroot}%{_bindir}
-%__install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
-%__install -D -m 755 mdv-locate %{buildroot}%{_bindir}/mdv-locate
-%__install -D -m 755 urls-fetcher %{buildroot}%{_bindir}/urls-fetcher
-%__mkdir_p %{buildroot}%{_datadir}/%{name}
-%__install -D -m 644 urls.txt %{buildroot}%{_datadir}/%{name}/urls.txt
-%__install -D -m 644 blacklist.txt %{buildroot}%{_datadir}/%{name}/blacklist.txt
-
-%clean
-%__rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_bindir}
+install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 755 urls-fetcher %{buildroot}%{_bindir}/urls-fetcher
+mkdir -p %{buildroot}%{_datadir}/%{name}
+install -D -m 644 urls.txt %{buildroot}%{_datadir}/%{name}/urls.txt
+install -D -m 644 blacklist.txt %{buildroot}%{_datadir}/%{name}/blacklist.txt
 
 %files
 %doc COPYING AUTHORS ChangeLog
 %{_bindir}/%{name}
-%{_bindir}/mdv-locate
 %{_bindir}/urls-fetcher
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/urls.txt
 %{_datadir}/%{name}/blacklist.txt
 
-
 %changelog
-* Tue Jan 08 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.9-1
+* Thu Jul 25 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.10-1
+- Add support for Upsteam Tracker repository
+- Fix URL for PCLinuxOS repository
+- Fix build with Qt5
+- Fix urls-fetcher utility
+- Drop no longer needed mdv-locate utility
+- Update urls.txt
+
+* Tue Jan 08 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.9-1
 - Add Rosa vs MGA and MGA vs Rosa reports
 - Update URLs for Cooker repositories (as Cooker moved to ABF)
 - Fix URLs for Fedora's RPM Fusion repositories
