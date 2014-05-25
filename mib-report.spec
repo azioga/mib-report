@@ -1,12 +1,13 @@
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 Name:		mib-report
-Version:	0.10
+Version:	0.11
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
 Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
 Patch0:		mib-report-0.9-rpm4.patch
+# Qt5 is also supported
 BuildRequires:	qt4-devel
 BuildRequires:	rpm-devel
 Requires:	lynx
@@ -32,13 +33,14 @@ Since 0.4 new mode "--search package" was added. It searches for package in all
 reference repositories and displays results in Repository, Version, URL format.
 
 Version %{version} supports reference repositories:
--Rosa 2012.1
+-Rosa 2014.1
 -MDV Cooker
 -Mageia Cauldron
--PCLinuxOS
--OpenSUSE Factory
--Alt Linux Sisyphus
 -Fedora Rawhide (+RpmFusion)
+-PCLinuxOS
+-Alt Linux Sisyphus
+-OpenSUSE Factory
+-PLD Linux 3.0
 -Gentoo
 -Debian
 -Ubuntu
@@ -72,6 +74,12 @@ install -D -m 644 blacklist.txt %{buildroot}%{_datadir}/%{name}/blacklist.txt
 %{_datadir}/%{name}/blacklist.txt
 
 %changelog
+* Sun May 25 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-1
+- Switch from Rosa 2012.1 to 2014.1 which is now current branch
+- Add PLD Linux to reference repositories
+- Fix encoding issues with Qt4
+- Update urls.txt
+
 * Thu Jul 25 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.10-1
 - Add support for Upsteam Tracker repository
 - Fix URL for PCLinuxOS repository
