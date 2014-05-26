@@ -82,7 +82,7 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
-* Mon May 26 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-3
+* Mon May 26 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-2
 - Add bash-completion
 
 * Sun May 25 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-1
