@@ -1,11 +1,13 @@
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 Name:		mib-report
 Version:	0.11
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
-Source:		http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
+Source0:	http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
+# bash-completion
+Source1:	%{name}
 Patch0:		mib-report-0.9-rpm4.patch
 # Qt5 is also supported
 BuildRequires:	qt4-devel
@@ -46,6 +48,17 @@ Version %{version} supports reference repositories:
 -Ubuntu
 -Upstream Tracker
 
+%files
+%doc COPYING AUTHORS ChangeLog
+%{_bindir}/%{name}
+%{_bindir}/urls-fetcher
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/urls.txt
+%{_datadir}/%{name}/blacklist.txt
+%{_datadir}/bash-completion/completions/%{name}
+
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q
 %if %{mdvver} < 201100
@@ -65,15 +78,13 @@ mkdir -p %{buildroot}%{_datadir}/%{name}
 install -D -m 644 urls.txt %{buildroot}%{_datadir}/%{name}/urls.txt
 install -D -m 644 blacklist.txt %{buildroot}%{_datadir}/%{name}/blacklist.txt
 
-%files
-%doc COPYING AUTHORS ChangeLog
-%{_bindir}/%{name}
-%{_bindir}/urls-fetcher
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/urls.txt
-%{_datadir}/%{name}/blacklist.txt
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
+* Mon May 26 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-2
+- Add bash-completion
+
 * Sun May 25 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-1
 - Switch from Rosa 2012.1 to 2014.1 which is now current branch
 - Add PLD Linux to reference repositories

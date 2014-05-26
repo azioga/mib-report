@@ -1,0 +1,24 @@
+# mib-repport(1) completion                                       -*- shell-script -*-
+
+_mib_report()
+{
+    local cur prev words cword split
+    _init_completion -s || return
+
+    case "$prev" in
+        --report)
+            COMPREPLY=( $( compgen -W 'mdv-rosa mdv-mga mga-rosa mga-mdv rosa-mdv rosa-mga' -- "$cur" ) )
+            return
+            ;;
+        --search|--update)
+            return
+            ;;
+    esac
+
+    if [[ "$cur" == * ]]; then
+        COMPREPLY=( $( compgen -W '--help --report --search --update' -- "$cur" ) )
+        return
+    fi
+} && complete -F _mib_report mib-report
+
+# ex: ts=4 sw=4 et filetype=sh
