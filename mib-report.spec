@@ -1,7 +1,7 @@
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 Name:		mib-report
 Version:	0.11
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
@@ -82,7 +82,7 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
-* Mon May 26 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-2
+* Mon May 26 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-3
 - Add bash-completion
 
 * Sun May 25 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.11-1

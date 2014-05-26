@@ -2,21 +2,25 @@
 
 _mib_report()
 {
-    local cur prev words cword split
+    local cur prev words cword
     _init_completion -s || return
 
     case "$prev" in
         --report)
-            COMPREPLY=( $( compgen -W 'mdv-rosa mdv-mga mga-rosa mga-mdv rosa-mdv rosa-mga' -- "$cur" ) )
+            COMPREPLY=( $( compgen -W "mdv-rosa mdv-mga mga-rosa mga-mdv rosa-mdv rosa-mga" -- "$cur" ) )
             return
             ;;
-        --search|--update)
+        mdv-rosa|mdv-mga|mga-rosa|mga-mdv|rosa-mdv|rosa-mga)
+            COMPREPLY=( $( compgen -W "all exclusives updates" -- "$cur" ) )
+            return
+            ;;
+        --search|--update|--help)
             return
             ;;
     esac
 
-    if [[ "$cur" == * ]]; then
-        COMPREPLY=( $( compgen -W '--help --report --search --update' -- "$cur" ) )
+    if [[ "$cword" -eq 1 ]]; then
+        COMPREPLY=( $( compgen -W "--help --report --search --update" -- "$cur" ) )
         return
     fi
 } && complete -F _mib_report mib-report
