@@ -9,6 +9,7 @@ Source0:	http://mib.pianetalinux.org/mib-report/%{name}-%{version}.tar.bz2
 # bash-completion
 Source1:	%{name}
 Patch0:		mib-report-0.9-rpm4.patch
+Patch1:		mib-report-0.13-cooker.patch
 # Qt5 is also supported
 BuildRequires:	qt4-devel
 BuildRequires:	rpm-devel
