@@ -65,6 +65,7 @@ Version %{version} supports reference repositories:
 %if %{mdvver} < 201100
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 # Can be built with Qt5 if needed
