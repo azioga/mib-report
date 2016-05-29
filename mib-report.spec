@@ -1,7 +1,7 @@
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 Name:		mib-report
 Version:	0.13
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://mib.pianetalinux.org/mib-report/
