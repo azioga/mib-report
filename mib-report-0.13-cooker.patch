@@ -1,0 +1,25 @@
+--- mib-report-0.13/packagedb.cpp	2016-03-04 15:56:12.000000000 +0100
++++ mib-report-0.13.patched/packagedb.cpp	2016-05-29 22:48:02.982957003 +0200
+@@ -69,19 +69,19 @@
+ 
+     out << "Downloading OpenMandriva Cooker Main lists" << endl;
+     out.flush();
+-    system("lynx --dump http://abf.rosalinux.ru/downloads/cooker/repository/SRPMS/main/release/ | egrep -o \"http:.*\" | grep src > $HOME/.config/mib-report/cooker.txt");
++    system("lynx --dump http://abf-downloads.openmandriva.org/cooker/repository/SRPMS/main/release/ | egrep -o \"http:.*\" | grep src > $HOME/.config/mib-report/cooker.txt");
+     out << "######################################################################## 100,0%" << endl;
+     out.flush();
+ 
+     out << "Downloading OpenMandriva Cooker Contrib lists" << endl;
+     out.flush();
+-    system("lynx --dump http://abf.rosalinux.ru/downloads/cooker/repository/SRPMS/contrib/release/ | egrep -o \"http:.*\" | grep src >> $HOME/.config/mib-report/cooker.txt");
++    system("lynx --dump http://abf-downloads.openmandriva.org/cooker/repository/SRPMS/contrib/release/ | egrep -o \"http:.*\" | grep src >> $HOME/.config/mib-report/cooker.txt");
+     out << "######################################################################## 100,0%" << endl;
+     out.flush();
+ 
+     out << "Downloading OpenMandriva Cooker Non-Free lists" << endl;
+     out.flush();
+-    system("lynx --dump http://abf.rosalinux.ru/downloads/cooker/repository/SRPMS/non-free/release/ | egrep -o \"http:.*\" | grep src >> $HOME/.config/mib-report/cooker.txt");
++    system("lynx --dump http://abf-downloads.openmandriva.org/cooker/repository/SRPMS/non-free/release/ | egrep -o \"http:.*\" | grep src >> $HOME/.config/mib-report/cooker.txt");
+     out << "######################################################################## 100,0%" << endl;
+     out.flush();
+ 
