@@ -1,6 +1,6 @@
 Summary:	A tool to generate packages reports for Rosa, MDV and MGA repos
 Name:		mib-report
-Version:	0.12
+Version:	0.13
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
@@ -82,6 +82,9 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
+* Fri Mar 04 2016 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.13-1
+- (ee22e89) New version 0.13 (new Fedora SRPMs URL)
+
 * Tue Jan 26 2016 Andrey Bondrov <andrey.bondrov@rosalab.ru> 0.12-1
 - New Upsteam Tracker URL
 - New Gentoo package search URL
